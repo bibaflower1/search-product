@@ -1,0 +1,119 @@
+<DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search products</title>
+</head>
+
+<body>
+<style>
+	* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fff;
+}
+
+.search-bar {
+    position: fixed;
+    display: inline-block;
+    left: 50%;
+    top: 8px;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 344px;
+    height: 48px;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+input {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 40px;
+    left: 172px;
+    margin: 4px 0;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+ul#wrapper {
+    list-style: none;
+    display: inline-block;
+    margin-top: 100px;
+}
+
+li {
+    width: 150px;
+    height: 70px;
+    background: red;
+    float: left;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    text-align: center;
+    margin:20px 100px 50px 150px;
+}
+
+a {
+    font-size: 18px;
+    color: #000;
+    line-height: 100px;
+    font-family: monospace;
+    text-decoration: none;
+}
+</style>
+    <div class="search-bar">
+        <input type="text" name="search" value="" autocomplete="off" id="myinput" onkeyup="searchFunction()" placeholder="Search">
+
+    </div>
+
+    <ul id="wrapper">
+        <li>
+            <a href="#"> Mac <br>price: $1200<br>Product is available</a>
+        </li>
+        <li>
+            <a href="#"> Asus<br>Price:$1500<br>Product is available</a>
+        </li>
+        <li>
+            <a href="#"> Iphone<br>Price:$1000<br>Sorry product is not available</a>
+        </li>
+        
+    </ul>
+</body>
+
+</html>
+<script>
+function searchFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById('myinput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById('wrapper');
+    li = ul.getElementsByTagName('li');
+
+    for(i=0 ; i< li.length; i++){
+        a = li[i].getElementsByTagName('a')[0];
+        if(a.innerHTML.toUpperCase().indexOf(filter) > -1){
+            li[i].style.display = "";
+        }
+
+        else{
+            li[i].style.display = 'none';
+        }
+    }
+}
+</script>
+</body>
+</html>
